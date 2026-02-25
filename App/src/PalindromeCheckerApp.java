@@ -1,9 +1,8 @@
-// version 6.0
+// version 7.0
 // author Abhay
-// useCase 6: Queue + Stack Based Palindrome Check
+// useCase 7: Deque-Based Optimized Palindrome Checker
 
-import java.util.Stack;
-import java.util.Queue;
+import java.util.Deque;
 import java.util.LinkedList;
 
 public class PalindromeCheckerApp {
@@ -14,25 +13,22 @@ public class PalindromeCheckerApp {
 
         String word = "madam";
 
-        Stack<Character> stack = new Stack<>();
-        Queue<Character> queue = new LinkedList<>();
+        Deque<Character> deque = new LinkedList<>();
 
-        // Push into stack and enqueue into queue
+        // Insert characters into deque
         for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            stack.push(ch);       // LIFO
-            queue.add(ch);        // FIFO
+            deque.addLast(word.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        // Compare pop (stack) vs remove (queue)
-        for (int i = 0; i < word.length(); i++) {
+        // Compare front and rear
+        while (deque.size() > 1) {
 
-            char stackChar = stack.pop();
-            char queueChar = queue.remove();
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
 
-            if (stackChar != queueChar) {
+            if (front != rear) {
                 isPalindrome = false;
                 break;
             }
