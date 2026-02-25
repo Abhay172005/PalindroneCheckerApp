@@ -1,8 +1,10 @@
-// version 5.0
+// version 6.0
 // author Abhay
-// useCase 5: Stack Based Palindrome Checker
+// useCase 6: Queue + Stack Based Palindrome Check
 
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class PalindromeCheckerApp {
 
@@ -13,20 +15,24 @@ public class PalindromeCheckerApp {
         String word = "madam";
 
         Stack<Character> stack = new Stack<>();
+        Queue<Character> queue = new LinkedList<>();
 
-        // Push characters into stack
+        // Push into stack and enqueue into queue
         for (int i = 0; i < word.length(); i++) {
-            stack.push(word.charAt(i));
+            char ch = word.charAt(i);
+            stack.push(ch);       // LIFO
+            queue.add(ch);        // FIFO
         }
 
         boolean isPalindrome = true;
 
-        // Pop and compare
+        // Compare pop (stack) vs remove (queue)
         for (int i = 0; i < word.length(); i++) {
 
-            char poppedChar = stack.pop();
+            char stackChar = stack.pop();
+            char queueChar = queue.remove();
 
-            if (word.charAt(i) != poppedChar) {
+            if (stackChar != queueChar) {
                 isPalindrome = false;
                 break;
             }
