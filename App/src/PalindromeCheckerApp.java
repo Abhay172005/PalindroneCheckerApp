@@ -1,30 +1,26 @@
-
-// version 1.0
+// version 3.0
 // author Abhay
-// useCase 1: Welcome page
+// useCase 3: Palindrome using String Reverse
 
-public class PalindromeCheckerApp {
+public class PalindromeCheckerApp {   // UC3 update
 
     public static void main(String[] args) {
 
         System.out.println("Welcome to Palindrome Checker App Management System");
 
-        String word = "madam";  // Hardcoded string
+        String original = "madam";
+        String reversed = "";
 
-        boolean isPalindrome = true;
-
-        for (int i = 0; i < word.length() / 2; i++) {
-
-            if (word.charAt(i) != word.charAt(word.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
+        // Reverse string using loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
         }
 
-        if (isPalindrome) {
-            System.out.println(word + " is a Palindrome.");
+        // Compare original and reversed
+        if (original.equals(reversed)) {
+            System.out.println(original + " is a Palindrome.");
         } else {
-            System.out.println(word + " is NOT a Palindrome.");
+            System.out.println(original + " is NOT a Palindrome.");
         }
     }
 }
