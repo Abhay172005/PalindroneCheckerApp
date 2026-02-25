@@ -1,4 +1,7 @@
 
+// version 1.0
+// author Abhay
+// useCase 1: Welcome page
 
 public class PalindromeCheckerApp {
 
