@@ -1,6 +1,8 @@
-// version 4.0
+// version 5.0
 // author Abhay
-// useCase 4: Character Array Based Palindrome Check
+// useCase 5: Stack Based Palindrome Checker
+
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
@@ -10,24 +12,24 @@ public class PalindromeCheckerApp {
 
         String word = "madam";
 
-        // Convert string to char array
-        char[] characters = word.toCharArray();
+        Stack<Character> stack = new Stack<>();
 
-        int left = 0;
-        int right = characters.length - 1;
+        // Push characters into stack
+        for (int i = 0; i < word.length(); i++) {
+            stack.push(word.charAt(i));
+        }
 
         boolean isPalindrome = true;
 
-        // Two-pointer approach
-        while (left < right) {
+        // Pop and compare
+        for (int i = 0; i < word.length(); i++) {
 
-            if (characters[left] != characters[right]) {
+            char poppedChar = stack.pop();
+
+            if (word.charAt(i) != poppedChar) {
                 isPalindrome = false;
                 break;
             }
-
-            left++;
-            right--;
         }
 
         if (isPalindrome) {
